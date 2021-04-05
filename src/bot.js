@@ -1,8 +1,9 @@
 require('dotenv').config();
 
 const{Client} = require('discord.js');
-const client = new Client();
+const client = new Client({ partials: ['MESSAGE', 'CHANNEL', 'REACTION'] });
 const PREFIX = "$";
+
 
 client.on('ready', () => {
     console.log(`${client.user.tag} has logged in.`);
@@ -56,6 +57,9 @@ client.on('message', async (message) => {
 
         }
     }
+
+
+
     console.log(`[${message.author.tag}]: ${message.content}` );
     
     // Bot replies to hello
@@ -76,6 +80,50 @@ client.on('message', async (message) => {
       var greeting_id = Math.floor(Math.random() * greetings.length);
       message.channel.send(greetings[greeting_id]);
     }
+});
+
+client.on('messageReactionAdd', (reaction, user) => {
+    const { name } = reaction.emoji;
+    const member = reaction.message.guild.members.cache.get(user.id);
+    if(reaction.message.id === '828628743702315128');
+        switch(name) {
+            case '🍎':
+                member.roles.add('828627380629143552');
+               break;
+            case '🐍':
+                member.roles.add('828627443480657931');
+                break;
+            case '🍇':
+                member.roles.add('828627565803470898');
+                break;
+            case '🍑':
+                member.roles.add('828627490637348874');
+                break;
+        }
+
+
+});
+
+client.on('messageReactionRemove', (reaction, user) => {
+    const { name } = reaction.emoji;
+    const member = reaction.message.guild.members.cache.get(user.id);
+    if(reaction.message.id === '828628743702315128');
+        switch(name) {
+            case '🍎':
+                member.roles.remove('828627380629143552');
+               break;
+            case '🐍':
+                member.roles.remove('828627443480657931');
+                break;
+            case '🍇':
+                member.roles.remove('828627565803470898');
+                break;
+            case '🍑':
+                member.roles.remove('828627490637348874');
+                break;
+        }
+
+
 });
 
 client.login(process.env.DISCORDJS_BOT_TOKEN);
