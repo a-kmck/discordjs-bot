@@ -22,16 +22,41 @@ client.on('message', (message) => {
         .substring(PREFIX.length)
         .split(/\s+/); 
         
+        
         if(CMD_NAME === 'kick'){
-            message.channel.send('Kicked the user');
+            if (args.length === 0) return message.reply('Please provide an ID');
+            const member = message.guild.members.cache.get(args[0]);
+
+            if (member){
+                member.kick();
+            }
+            else{
+                message.channel.send('That member was not found');
+            }
         }
         else if(CMD_NAME === 'ban'){
             message.channel.send('Banned the user');
         }
     }
     console.log(`[${message.author.tag}]: ${message.content}` );
+    
+    // Bot replies to hello
     if(message.content === 'hello'){
-        message.channel.send('wats poppin');
+
+        var greetings = [
+            "wats poppin"
+          , "ciao"
+          , "welcome"
+          , "howdy"
+          , "greetings"
+          , "salut"
+          , "hallo"
+          , "hola"
+          , "Gday"
+          , "Hey"
+      ];
+      var greeting_id = Math.floor(Math.random() * greetings.length);
+      message.channel.send(greetings[greeting_id]);
     }
 });
 
