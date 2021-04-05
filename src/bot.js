@@ -13,7 +13,7 @@ client.on('ready', () => {
 * BOT RESPONSES
 */
 
-client.on('message', (message) => {
+client.on('message', async (message) => {
 
     if (message.author.bot) return;
     if (message.content.startsWith(PREFIX)){
@@ -39,8 +39,21 @@ client.on('message', (message) => {
                 message.channel.send('That member was not found');
             }
         }
+
         else if(CMD_NAME === 'ban'){
-            message.channel.send('Banned the user');
+            if (!message.member.hasPermission('BAN_MEMBERS'))
+                return message.reply('You do not have persmission to use that command');
+            
+                if (args.length === 0) return message.reply('Please provide an ID');
+               
+                try{
+                   const user = await message.guild.members.ban(args[0]);
+                   message.channel.send('User was banned successfully');
+                } catch(err){
+                    console.log(err);
+                    message.channel.send("An error occured. Either I don't have permissions or the user was not fouhnd");
+                }
+
         }
     }
     console.log(`[${message.author.tag}]: ${message.content}` );
@@ -49,12 +62,12 @@ client.on('message', (message) => {
     if(message.content === 'hello'){
 
         var greetings = [
-            "wats poppin"
+            "wats poppn"
           , "ciao"
-          , "welcome"
-          , "howdy"
+          , "whats goodie chickenbootie"
           , "greetings"
-          , "salut"
+          , "not a thang chicken wang"
+          , "bonjour"
           , "hallo"
           , "hola"
           , "Gday"
