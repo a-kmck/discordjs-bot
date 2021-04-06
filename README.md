@@ -3,7 +3,7 @@
 
 ![bot icon](botIcon.PNG)
 
-Simple discord bot using node.js
+Simple discord bot made with node.js
 
 ## Commands: 
 ```
