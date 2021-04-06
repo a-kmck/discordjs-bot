@@ -68,9 +68,9 @@ client.on('message', async (message) => {
         var greetings = [
             "wats poppn"
           , "ciao"
-          , "whats goodie chickenbootie"
+          , "hello there"
           , "greetings"
-          , "not a thang chicken wang"
+          , "welcome"
           , "bonjour"
           , "hallo"
           , "hola"
