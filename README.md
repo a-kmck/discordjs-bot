@@ -5,13 +5,13 @@
 
 Simple discord bot using node.js
 
-Commands: 
+## Commands: 
 ```
 $kick [username]
 $ban [username]
 ```
 
-Roles:
+## Roles: 
 🍎 - Javascript </br>
 🐍 - Python </br>
 🍑 - Java </br>
